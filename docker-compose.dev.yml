@@ -7,13 +7,14 @@ services:
       - '27017:27017'
     volumes:
       - ./mongodb:/data/db
+
   wongames-backend:
     container_name: wongames-backend
     build:
       context: ./wongames-backend
       dockerfile: Dockerfile.dev
     ports:
-      - 7100:7100
+      - ${BACKEND_PORT}:3000
     volumes:
       - ./wongames-backend:/app
       - /app/node_modules
