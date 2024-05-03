@@ -1,0 +1,9 @@
+services:
+  backend:
+    build:
+      context: ./wongames-backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - 7100:7100
+    volumes:
+      - ./wongames-backend:/app
