@@ -1,5 +1,5 @@
 services:
-  backend:
+  wongames-backend:
     container_name: wongames-backend
     build:
       context: ./wongames-backend
