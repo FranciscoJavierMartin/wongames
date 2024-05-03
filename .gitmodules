@@ -1,0 +1,3 @@
+[submodule "wongames-backend"]
+	path = wongames-backend
+	url = https://github.com/FranciscoJavierMartin/wongames-backend.git

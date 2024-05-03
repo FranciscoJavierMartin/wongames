@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: wongames-backend
     build:
       context: ./wongames-backend
       dockerfile: Dockerfile.dev
@@ -7,3 +8,4 @@ services:
       - 7100:7100
     volumes:
       - ./wongames-backend:/app
+      - /app/node_modules
