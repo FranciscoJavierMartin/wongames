@@ -1,11 +1,30 @@
 services:
+  db:
+    container_name: wongames-db
+    image: mongo:7.0
+    restart: always
+    ports:
+      - ${DATABASE_PORT}:27017
+    volumes:
+      - ./mongodb:/data/db
+
   wongames-backend:
     container_name: wongames-backend
     build:
       context: ./wongames-backend
       dockerfile: Dockerfile.dev
+    # Test something like this
+    # command: "npm run start:dev"
     ports:
-      - 7100:7100
+      - ${BACKEND_PORT}:3000
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - CLOUDINARY_FOLDER=${CLOUDINARY_FOLDER}
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
     volumes:
       - ./wongames-backend:/app
       - /app/node_modules
+    depends_on:
+      - db

@@ -7,4 +7,5 @@ docker run --rm -it -v .:/app/ npm-nest-utils nest new wongames-backend
 cd wongames-backend
 docker run --rm -it -v .:/app/ npm-nest-utils npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql
 docker run --rm -it -v .:/app/ npm-nest-utils nest g res game --no-spec
+docker-compose -f docker-compose.dev.yml  up --build --force-recreate --always-recreate-deps
 ```
