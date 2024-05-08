@@ -13,8 +13,6 @@ services:
     build:
       context: ./wongames-backend
       dockerfile: Dockerfile.dev
-    # Test something like this
-    # command: "npm run start:dev"
     ports:
       - ${BACKEND_PORT}:3000
     environment:
