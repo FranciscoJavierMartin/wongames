@@ -17,6 +17,7 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - ${BACKEND_PORT}:3000
+    command: /bin/sh -c 'npm install && npm run start:dev'
     # Use this instead of environment
     # env_file:
     #   - ./.env.backend
@@ -28,5 +29,6 @@ services:
       - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
     volumes:
       - ./wongames-backend:/app
+      - ./wongames-backend/node_modules:/app/node_modules
     depends_on:
       - db
