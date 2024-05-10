@@ -6,7 +6,8 @@ services:
     image: mongo:7.0
     restart: always
     ports:
-      - ${DATABASE_PORT}:27017
+      - ${DATABASE_PORT}:27018
+    command: ["--port", "27018"]
     volumes:
       - ./mongodb:/data/db
 
