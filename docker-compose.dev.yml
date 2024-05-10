@@ -11,6 +11,10 @@ services:
     volumes:
       - ./mongodb:/data/db
 
+  db-admin:
+    container_name: wongames-db-admin
+    image: mongo-express:1.0.2-20-alpine3.19
+
   wongames-backend:
     container_name: wongames-backend
     build:
