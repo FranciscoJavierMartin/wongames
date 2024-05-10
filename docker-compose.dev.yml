@@ -17,7 +17,6 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - ${BACKEND_PORT}:3000
-    command: /bin/sh -c 'npm install && npm run start:dev'
     # Use this instead of environment
     # env_file:
     #   - ./.env.backend
