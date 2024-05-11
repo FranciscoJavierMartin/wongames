@@ -1,16 +1,5 @@
 # Won games
 
-To create the project
-
-```sh
-docker build -f ./Dockerfile.utils -t npm-nest-utils .
-docker run --rm -it -v .:/app/ npm-nest-utils nest new wongames-backend
-cd wongames-backend
-docker run --rm -it -v .:/app/ npm-nest-utils npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql
-docker run --rm -it -v .:/app/ npm-nest-utils nest g res game --no-spec
-docker-compose -f docker-compose.dev.yml  up --build
-```
-
 ## Development setup
 
 ### Requirements
@@ -40,3 +29,29 @@ git submodule update --init --recursive
 docker-compose -f docker-compose.dev.yml up --build
 ```
 Now your project is ready to coding.
+
+## Execute commands
+In order to avoid Node.js installation, you can build a "utility container" to run those commands. Commands you can execute are from execute scripts defined in package.json or install packages for the project.
+
+At the root project there a Dockerfile.utils.
+```sh
+docker build -f ./Dockerfile.utils -t npm-nest-utils .
+```
+To execute commands inside the container.
+```sh
+docker run --rm -it -v .:/app/ npm-nest-utils npm i moment
+```
+
+
+## Project creation
+
+To create the project
+
+```sh
+docker build -f ./Dockerfile.utils -t npm-nest-utils .
+docker run --rm -it -v .:/app/ npm-nest-utils nest new wongames-backend
+cd wongames-backend
+docker run --rm -it -v .:/app/ npm-nest-utils npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql
+docker run --rm -it -v .:/app/ npm-nest-utils nest g res game --no-spec
+docker-compose -f docker-compose.dev.yml  up --build
+```
