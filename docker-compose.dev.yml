@@ -5,12 +5,12 @@ services:
     container_name: ${MONGODB_SERVER_NAME}
     image: mongo:7.0
     restart: always
-    command: ['--auth', "--port", "${DATABASE_PORT}"]
+    command: ['--port', '${DATABASE_PORT}']
     ports:
       - ${DATABASE_PORT}:${DATABASE_PORT}
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
+    # environment:
+      # - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
+      # - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
     volumes:
       - ./mongodb:/data/db
 
@@ -23,30 +23,30 @@ services:
     environment:
       # - ME_CONFIG_MONGODB_PORT=${DATABASE_PORT}
       # - ME_CONFIG_MONGODB_SERVER=wongames-db
-      - ME_CONFIG_MONGODB_URL=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_SERVER_NAME}:${DATABASE_PORT}
-      # - ME_CONFIG_MONGODB_URL=mongodb://${MONGODB_SERVER_NAME}:${DATABASE_PORT}
+      # - ME_CONFIG_MONGODB_URL=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_SERVER_NAME}:${DATABASE_PORT}
+      - ME_CONFIG_MONGODB_URL=mongodb://${MONGODB_SERVER_NAME}:${DATABASE_PORT}
     depends_on:
       - wongames-db
 
 
-  # wongames-backend:
-  #   container_name: wongames-backend
-  #   build:
-  #     context: ./wongames-backend
-  #     dockerfile: Dockerfile.dev
-  #   ports:
-  #     - ${BACKEND_PORT}:3000
-  #   # Use this instead of environment
-  #   # env_file:
-  #   #   - ./.env.backend
-  #   environment:
-  #     - DATABASE_URL=${DATABASE_URL}
-  #     - CLOUDINARY_FOLDER=${CLOUDINARY_FOLDER}
-  #     - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
-  #     - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
-  #     - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
-  #   volumes:
-  #     - ./wongames-backend:/app
-  #     - ./wongames-backend/node_modules:/app/node_modules
-  #   depends_on:
-  #     - wongames-db
+  wongames-backend:
+    container_name: wongames-backend
+    build:
+      context: ./wongames-backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - ${BACKEND_PORT}:3000
+    # Use this instead of environment
+    # env_file:
+    #   - ./.env.backend
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - CLOUDINARY_FOLDER=${CLOUDINARY_FOLDER}
+      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
+      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
+    volumes:
+      - ./wongames-backend:/app
+      - ./wongames-backend/node_modules:/app/node_modules
+    depends_on:
+      - wongames-db
