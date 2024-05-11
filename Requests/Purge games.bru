@@ -1,0 +1,11 @@
+meta {
+  name: Purge games
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:7100/game/purge
+  body: none
+  auth: none
+}
