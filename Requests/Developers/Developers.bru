@@ -1,0 +1,20 @@
+meta {
+  name: Developers
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: http://localhost:7100/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  {
+    developers {
+      name
+    }
+  }
+  
+}
