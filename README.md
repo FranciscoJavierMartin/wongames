@@ -42,6 +42,16 @@ To execute commands inside the container.
 docker run --rm -it -v .:/app/ npm-nest-utils npm i moment
 ```
 
+## Test execution
+To execute tests.
+1. Create a container to execute the tests inside.
+```sh
+docker build -f ./Dockerfile.test -t wongames-backend-tests .
+```
+2. Execute the tests inside the container.
+```sh
+docker run --rm -it -v .:/app/ wongames-backend-tests
+```
 
 ## Project creation
 
