@@ -4,3 +4,6 @@
 [submodule "wongames-next"]
 	path = wongames-next
 	url = https://github.com/FranciscoJavierMartin/wongames-next.git
+[submodule "wongames-nuxt"]
+	path = wongames-nuxt
+	url = https://github.com/FranciscoJavierMartin/wongames-nuxt.git
