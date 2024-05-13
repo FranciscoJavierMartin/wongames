@@ -7,3 +7,6 @@
 [submodule "wongames-nuxt"]
 	path = wongames-nuxt
 	url = https://github.com/FranciscoJavierMartin/wongames-nuxt.git
+[submodule "wongames-qwik"]
+	path = wongames-qwik
+	url = https://github.com/FranciscoJavierMartin/wongames-qwik.git
