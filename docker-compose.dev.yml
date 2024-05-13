@@ -70,3 +70,16 @@ services:
       - ./wongames-nuxt/node_modules:/app/node_modules
     depends_on:
       - wongames-backend
+
+  wongames-qwik:
+    container_name: wongames-qwik
+    build:
+      context: ./wongames-qwik
+      dockerfile: Dockerfile.dev
+    ports:
+      - ${QWIK_CLIENT_PORT}:5173
+    volumes:
+      - ./wongames-qwik:/app
+      - ./wongames-qwik/node_modules:/app/node_modules
+    depends_on:
+      - wongames-backend
