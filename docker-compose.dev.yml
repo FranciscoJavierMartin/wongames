@@ -44,3 +44,16 @@ services:
       - ./wongames-backend/node_modules:/app/node_modules
     depends_on:
       - wongames-db
+
+  wongames-next:
+    container_name: wongames-next
+    build:
+      context: ./wongames-next
+      dockerfile: Dockerfile.dev
+    ports:
+      - ${NEXT_CLIENT_PORT}:3000
+    volumes:
+      - ./wongames-next:/app
+      - ./wongames-next/node_modules:/app/node_modules
+    depends_on:
+      - wongames-backend
