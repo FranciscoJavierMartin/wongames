@@ -57,3 +57,16 @@ services:
       - ./wongames-next/node_modules:/app/node_modules
     depends_on:
       - wongames-backend
+  
+  wongames-nuxt:
+    container_name: wongames-nuxt
+    build:
+      context: ./wongames-nuxt
+      dockerfile: Dockerfile.dev
+    ports:
+      - ${NUXT_CLIENT_PORT}:3000
+    volumes:
+      - ./wongames-nuxt:/app
+      - ./wongames-nuxt/node_modules:/app/node_modules
+    depends_on:
+      - wongames-backend
