@@ -22,11 +22,15 @@ git clone https://github.com/FranciscoJavierMartin/wongames.git
 git submodule update --init --recursive
 ```
 
-3. Create a new file _.env_ at the root project. Copy the content of _.env.template_ inside the _.env_ file and replace with your own values.
+3. Create a new file _.env_ at the root project. Copy the content of _.env.template_ inside the _.env_ file and replace with your own values. Use your cloudinary credentials.
 4. Run docker-compose for development.
 
 ```sh
 docker-compose -f docker-compose.dev.yml up --build
+```
+5. (Optional) Populate database
+```sh
+curl --request POST --url http://localhost:7100/game/populate
 ```
 Now your project is ready to coding.
 
