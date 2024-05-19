@@ -57,12 +57,13 @@ services:
       - ./wongames-next/node_modules:/app/node_modules
     depends_on:
       - wongames-backend
-  
+
   wongames-next-storybook:
     container_name: wongames-next-storybook
     build:
       context: ./wongames-next
       dockerfile: Dockerfile.storybook
+    restart: always
     ports:
       - ${NEXT_CLIENT_STORYBOOK_PORT}:6006
     volumes:
@@ -84,6 +85,20 @@ services:
     depends_on:
       - wongames-backend
 
+  wongames-nuxt-storybook:
+    container_name: wongames-nuxt-storybook
+    build:
+      context: ./wongames-nuxt
+      dockerfile: Dockerfile.storybook
+    restart: always
+    ports:
+      - ${NUXT_CLIENT_STORYBOOK_PORT}:6006
+    volumes:
+      - ./wongames-nuxt:/app
+      - ./wongames-nuxt/node_modules:/app/node_modules
+    depends_on:
+      - wongames-nuxt
+
   wongames-qwik:
     container_name: wongames-qwik
     build:
@@ -102,6 +117,7 @@ services:
     build:
       context: ./wongames-qwik
       dockerfile: Dockerfile.storybook
+    restart: always
     ports:
       - ${QWIK_CLIENT_STORYBOOK_PORT}:6006
     volumes:
