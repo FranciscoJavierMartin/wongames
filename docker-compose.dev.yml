@@ -96,3 +96,16 @@ services:
       - ./wongames-qwik/node_modules:/app/node_modules
     depends_on:
       - wongames-backend
+
+  wongames-qwik-storybook:
+    container_name: wongames-qwik-storybook
+    build:
+      context: ./wongames-qwik
+      dockerfile: Dockerfile.storybook
+    ports:
+      - ${QWIK_CLIENT_STORYBOOK_PORT}:6006
+    volumes:
+      - ./wongames-qwik:/app
+      - ./wongames-qwik/node_modules:/app/node_modules
+    depends_on:
+      - wongames-qwik
