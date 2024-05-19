@@ -58,6 +58,19 @@ services:
     depends_on:
       - wongames-backend
   
+  wongames-next-storybook:
+    container_name: wongames-next-storybook
+    build:
+      context: ./wongames-next
+      dockerfile: Dockerfile.storybook
+    ports:
+      - ${NEXT_CLIENT_STORYBOOK_PORT}:6006
+    volumes:
+      - ./wongames-next:/app
+      - ./wongames-next/node_modules:/app/node_modules
+    depends_on:
+      - wongames-next
+
   wongames-nuxt:
     container_name: wongames-nuxt
     build:
